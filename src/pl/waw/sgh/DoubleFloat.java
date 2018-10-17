@@ -8,6 +8,7 @@ public class DoubleFloat {
         double d2 = 463642235;
 
         System.out.println(d1*d2);
-
+        //you can assign float to double, but not other way around
+        //double d = float s;
     }
 }
