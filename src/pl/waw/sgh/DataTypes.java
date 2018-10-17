@@ -38,6 +38,37 @@ public class DataTypes {
 
         System.out.println(d3);
 
+        int ii1,ii2;
+        ii1 = 6;
+        ii2 = 5;
+
+        if(ii1==ii2) {
+            System.out.println("ii1 equals ii2");
+        } else {
+            System.out.println("ii1 does not equal ii2");
+
+        }
+        boolean cond = ii1==ii2;
+        // ! - negate
+        // || - OR
+        // && - AND
+        if(cond || ii1>ii2) {
+            System.out.println("ii1 equals ii2");
+        } else {
+            System.out.println("ii1 does not equal ii2");
+
+        }
+        int iii = (ii1>5 ? 15 : 10);
+        if(ii1>5){
+            iii=15;
+        }else{
+            iii=10;
+        }
+        //te dwie funkcje to to samo ^^^^^^
+        System.out.println(iii);
+
+
+
     }
 
 }
