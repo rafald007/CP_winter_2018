@@ -1,9 +1,19 @@
 package pl.waw.sgh;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 public class Homework1 {
 
 
+
+       public static String cfibon(int NN, int o, int p){
+
+           String fibon="";
+           fibon = fibon + p + " " + o + " ";
+           o = o + p;
+          p = p + o;
+           if (NN<=0) return fibon;
+           else return cfibon(NN - 2, o, p)+fibon;
+
+       }
 
         public static boolean isValid(String email)
         {
@@ -18,13 +28,13 @@ public class Homework1 {
             return pat.matcher(email).matches();
         }
 
-        /* driver function to check */
 
 
     public static void main(String[] args){
         int p=0;
         int o=1;
         int n=100;
+        System.out.println(cfibon(10,0,1)); ;
         String fibonacci="Ciag fibonacciego: ";
         for (int i=0;i<n;i++){
             fibonacci=fibonacci + p + " "+o+" ";
