@@ -7,11 +7,12 @@ public class Homework1 {
        public static String cfibon(int NN, int o, int p){
 
            String fibon="";
-           fibon = fibon + p + " " + o + " ";
+           fibon = p + " " + o + " " + fibon;
+           System.out.print(o + " " + p + " ");
            o = o + p;
           p = p + o;
            if (NN<=0) return fibon;
-           else return cfibon(NN - 2, o, p)+fibon;
+           else return cfibon(NN - 2, o, p)+fibon; //I don't know how to reverse the output to make it correct
 
        }
 
