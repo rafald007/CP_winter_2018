@@ -15,19 +15,19 @@ public class Homework1 {
 
        }
 
-        public static boolean isValid(String email)
-        {
-            String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
-                    "[a-zA-Z0-9_+&*-]+)*@" +
-                    "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
-                    "A-Z]{2,7}$";
-
-            Pattern pat = Pattern.compile(emailRegex);
-            if (email == null)
-                return false;
-            return pat.matcher(email).matches();
-        }
-
+//        public static boolean isValid(String email)
+//        {
+//            String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
+//                    "[a-zA-Z0-9_+&*-]+)*@" +
+//                    "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
+//                    "A-Z]{2,7}$";
+//
+//            Pattern pat = Pattern.compile(emailRegex);
+//            if (email == null)
+//                return false;
+//            return pat.matcher(email).matches();
+//        }
+//NOT MINE, BUT WORKS
 
 
     public static void main(String[] args){
@@ -44,12 +44,19 @@ public class Homework1 {
         }
         System.out.println(fibonacci);
         //##################################################
-        String email="rafa@faw.com";
-        if(isValid(email)){
-            System.out.printf("Yes");
-        }else {
-            System.out.printf("No");
+//        String email="rafa@faw.com";
+//        if(isValid(email)){
+//            System.out.printf("Yes");
+//        }else {
+//            System.out.printf("No");
+//        }
+
+        String emaill = "afa@fweawd.com";
+        if(emaill.matches( ".*@.*\\.com")){
+            System.out.println("Email valid");
+//            else System.out.println("Email not valid");
         }
+        else System.out.println("Email not valid");
 
 
     }
