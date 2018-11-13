@@ -185,10 +185,16 @@ public class Homework2 {
             if (win==1) break;
         }
         if (var[0][0]+var[1][1]+var[2][2]==3||
-                var[0][2]+var[1][1]+var[2][0]==3) System.out.println("Xs won");
+                var[0][2]+var[1][1]+var[2][0]==3) {
+            System.out.println("Xs won");
+            win=1;
+        }
             if (var[0][2]+var[1][1]+var[2][0]==-3||
-                    var[0][0]+var[1][1]+var[2][2]==-3) System.out.println("Os won");
+                    var[0][0]+var[1][1]+var[2][2]==-3) {
+                System.out.println("Os won");
+                win = 1;
+            }
 
-
+        if(win==0) System.out.println("It's a draw!");
     }
 }
