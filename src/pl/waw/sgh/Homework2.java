@@ -71,7 +71,7 @@ public class Homework2 {
 
 
 
- File inFile = new File("C:/Users/USER/Desktop/Dane.txt");
+ File inFile = new File("C:/Users/rd73190/Desktop/Dane.txt");
         Scanner scanner = new Scanner(inFile);
        String arr[][]=new String[3][];
         int k=0;
@@ -144,28 +144,41 @@ public class Homework2 {
 
 
         }
+
         for (int i=0;i<3;i++) {
             for (int j = 0; j < 3; j++) {
 //                System.out.print(arr[i][j] + " ");
                 var[i][j]=Integer.parseInt(arr[i][j]);
 //                System.out.print(var[i][j]+" ");
             }
-            System.out.println();
+//            System.out.println();
         }
         int win=0;
         int sumkol [] = new int[3];
+        for(int i=0;i<3;i++){
+            for(int j=0;j<3;j++){
+                System.out.print(var[i][j] + " ");
+                if (var[i][j]!=1&&var[i][j]!=-1){
+                    win=-1;
+
+
+                }
+
+            }
+            System.out.println();
+        }
         for (int i=0;i<3;i++) {
             int sumar=0;
             int kol1=0;
             for (int j = 0; j < 3; j++) {
                 kol1=kol1+var[j][i];
                 sumar=sumar+var[i][j];
-                System.out.print(var[i][j] + " ");
+//                System.out.print(var[i][j] + " ");
 
             }
             sumkol[i]=kol1;
+//            System.out.println();
 
-            System.out.println();
             if (sumkol[i]==3){
                 System.out.println("Xs won");
                 win=1;
@@ -196,5 +209,7 @@ public class Homework2 {
             }
 
         if(win==0) System.out.println("It's a draw!");
+        if(win==-1) System.out.println("Game is not over");
+
     }
 }
