@@ -3,7 +3,7 @@ package pl.waw.sgh;
 import java.io.File;
 
 public class FileSizeHom {
-    static File file = new File("C://Users//USER//Desktop//uczelnia//ekonometria");
+    static File file = new File("C://Users//rd73190//Desktop//RD");
 
     public static void main(String[] args) {
         boolean isDir = file.isDirectory();
