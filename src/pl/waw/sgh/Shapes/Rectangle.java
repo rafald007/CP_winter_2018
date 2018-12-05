@@ -1,25 +1,18 @@
-package pl.waw.sgh.Shapes;
+package pl.waw.sgh.shapes;
 
-import pl.waw.sgh.Objects.PlayWithRectangles;
-
-public class Rectangle extends Shape {
-    /*private double parA = 0; //jesli pominiemy public albo static i nie napiszemy nic, operator będzei dostepny w całej paczce
-    private double parB = 0;*/ //protected makes operator visible to children and private for others
+public class Rectangle extends Shape implements PerimeterCalculation {
 
     public Rectangle(double parA, double parB) {
-        super(parA, parB); //points to the super class(parent - Shape.java)
+        super(parA, parB);
     }
 
-
-    public double CalculateSurface() {
-        return parA*parB;
+    @Override
+    public double calculateSurface() {
+        return parA * parB;
     }
 
-    public void setParB(double parB){
-        this.parB = parB;
-    }
-    public String toString(){
-        return getClass().getSimpleName() + "[" + parA + ", " + parB + "] Sruface: " +
-                CalculateSurface();
+    @Override
+    public double calculatePerimeter() {
+        return 2 * parA + 2 * parB;
     }
 }

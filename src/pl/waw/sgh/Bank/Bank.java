@@ -41,12 +41,22 @@ public class Bank {
     }
 
     private Account findAccID (Integer accID){
+        // iterate through the account list and return the account with a given id
+          for (Account acc : accList) {
+            //if(accID.equals(acc.getAccountID()))
+            if (accID == acc.getAccountID()) {
+                return acc;
+            }
 
-        return;
+        }
+        return null;
     }
 
-    public void transfer (Integer fromAccID, Integer toAccID, Double ammount){
-
+    public void transfer (Integer fromAccID, Integer toAccID, Double amount){
+            Account fromAcc = findAccID(fromAccID);
+            Account toAcc = findAccID(toAccID);
+            fromAcc.charge(amount);
+            toAcc.deposit(amount);
     }
 
     @Override
