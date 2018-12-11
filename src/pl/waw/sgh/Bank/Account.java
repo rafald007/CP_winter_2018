@@ -33,8 +33,13 @@ public abstract class Account {
     }
 
     public void charge(Double amount){
-        BigDecimal res = balance.subtract(new BigDecimal(amount));
-        setBalance(res);
+        if(balance.compareTo(new BigDecimal(amount))<0){
+            System.out.println("NO MONEY, PLS GIMME MOAR $$$");
+        }
+        else {
+            BigDecimal res = balance.subtract(new BigDecimal(amount));
+            setBalance(res);
+        }
     }
 
 

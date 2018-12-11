@@ -1,7 +1,9 @@
 package pl.waw.sgh.Bank;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class Bank {
 
@@ -40,23 +42,35 @@ public class Bank {
 
     }
 
-    private Account findAccID (Integer accID){
+    private Account findAccID (Integer accID) /*throws NonExistantAccountException */{
         // iterate through the account list and return the account with a given id
-          for (Account acc : accList) {
+        int exist=0;
+        for (Account acc : accList) {
             //if(accID.equals(acc.getAccountID()))
             if (accID == acc.getAccountID()) {
+                exist=1;
                 return acc;
             }
+              /*throw new NonExistantAccountException("Account id: " + accID + " does not exist!");*/
 
         }
+        if(exist==0) System.out.println("Account id: " + accID + " does not exist!");
         return null;
     }
+
+
 
     public void transfer (Integer fromAccID, Integer toAccID, Double amount){
             Account fromAcc = findAccID(fromAccID);
             Account toAcc = findAccID(toAccID);
-            fromAcc.charge(amount);
-            toAcc.deposit(amount);
+            if(fromAcc.getBalance().compareTo(new BigDecimal(amount))<0){
+                System.out.println("NO MONEY, PLS GIMME MOAR $$$");
+             }
+            else{
+                fromAcc.charge(amount);
+                toAcc.deposit(amount);
+             }
+
     }
 
     @Override
@@ -66,4 +80,7 @@ public class Bank {
                 ", \naccList= \n" + accList +
                 '}';
     }
+
+
+
 }

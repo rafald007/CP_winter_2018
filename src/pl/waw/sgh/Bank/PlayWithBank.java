@@ -9,12 +9,13 @@ public class PlayWithBank {
         Account a1 = bank.newAccount(c1, "Debit");
         Account a2 = bank.newAccount(c1, "Savings");
         Account a3 = bank.newAccount(c1, "");
+        Account a13 = null;
 
         Account a4 = bank.newAccount(c2, "Debit");
         Account a5= bank.newAccount(c2, "Savings");
 
 
-        a1.deposit(150.0);
+        a13.deposit(150.0);
         a2.deposit(1421.0);
         a3.deposit(25.0);
 
@@ -23,7 +24,6 @@ public class PlayWithBank {
         a2.deposit(29.0);
 
         System.out.println(bank);
-
 
 
 
