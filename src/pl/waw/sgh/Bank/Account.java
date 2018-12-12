@@ -32,11 +32,19 @@ public abstract class Account {
 
     }
 
-    public void charge(Double amount){
+/*    public void charge(Double amount){
         if(balance.compareTo(new BigDecimal(amount))<0){
             System.out.println("NO MONEY, PLS GIMME MOAR $$$");
         }
         else {
+            BigDecimal res = balance.subtract(new BigDecimal(amount));
+            setBalance(res);
+        }
+    }*/
+    public void charge(Double amount) throws NotEnoughMoneyException{
+        if(balance.compareTo(new BigDecimal(amount))<0) {
+            throw new NotEnoughMoneyException("Not enough money, you tried to charge: " + amount + " only: " + balance + " available");
+        } else {
             BigDecimal res = balance.subtract(new BigDecimal(amount));
             setBalance(res);
         }
