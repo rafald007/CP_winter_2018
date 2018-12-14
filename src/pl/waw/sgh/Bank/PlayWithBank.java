@@ -17,7 +17,7 @@ public class PlayWithBank {
 
         a1.deposit(21.0);
         a2.deposit(1421.0);
-        a3.deposit(25.0);
+        a3.deposit(1025.0);
 
 
         try {
@@ -26,20 +26,20 @@ public class PlayWithBank {
             e.printStackTrace();
         }
 
-        System.out.println(bank);
+//        System.out.println(bank);
 //        a2.deposit(29.0);
 
         try {
-            bank.transfer(100, 111, 50.00);
+            bank.transfer(100, 102, 1000.00);
         } catch (NotEnoughMoneyException e) {
             e.printStackTrace();
-            System.out.println("Not enough money... choose other account: ");
+//            System.out.println("Not enough money... choose other account: ");
 //            Account acc = bank.findAccID(100);
-//            Customer cust = acc.getCustomer();
+//            Integer cust = acc.getCustomer().getCustomerID();
 //            cust.getCustomerID();
         }
 
-        System.out.println(bank);
+//        System.out.println(bank);
 
 
 

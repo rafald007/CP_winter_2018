@@ -42,19 +42,42 @@ public class Bank {
 
     }
 
-//    private Account findAccCus (Integer cusID){
-//
-//        for (Account acc : accList){
-//
-//        }
-//        for (Customer cus : custList){
-//            if (cusID==cus.getCustomerID()){
-//                Account
-//
+    private List<Account> custaccList = new ArrayList<>();
+    private String findAccCus (Integer accID, Integer toAccID, Double amount) throws NonExistingAccountException {
+        custaccList.clear();
+        Account Tacc = findAccID(accID);
+        Integer cust = Tacc.getCustomer().getCustomerID();
+            for(Customer cus : custList){
+                if(cust==cus.getCustomerID()){
+                    for (Account acc : accList) {
+                        if (acc.getCustomer()==cus) {
+                            if(acc.getBalance().compareTo(new BigDecimal(amount))>=0) {
+                                custaccList.add(acc);
+//                                accID=acc.getAccountID();
+//                                try {
+//                                    transfer(accID,toAccID,amount);
+//                                    break;
+//                                } catch (NotEnoughMoneyException e) {
+//                                    e.printStackTrace();
+//                                }
+                            }
+//                            return acc;
+                        }
+                    }
+
+                }
+            }
+            String list = custaccList.toString();
+            System.out.println(list);
+         return list;
+//            for(Account subacc:custaccList){
+//                return subacc;
 //            }
-//        }
-//      return
-//    }
+
+//        throw new NonExistingAccountException("Other account do not exist");
+    }
+
+
 
     public Account findAccID (Integer accID) throws NonExistingAccountException {
         int exist=0;
@@ -71,14 +94,26 @@ public class Bank {
         /*if(exist==0) System.out.println("Account id: " + accID + " does not exist!");*/
 //        return null;
     }
-
+//    public Account reading() {
+//        for(Account read:custaccList){
+//            System.out.println(read);
+//        }
+//        try {
+//            throw new NonExistingAccountException("THere is no other accounts");
+//        } catch (NonExistingAccountException e) {
+//            e.printStackTrace();
+//        }
+//        return null;
+//    }
 
 
     public void transfer (Integer fromAccID, Integer toAccID, Double amount)throws NonExistingAccountException, NotEnoughMoneyException{
             Account fromAcc = findAccID(fromAccID);
             Account toAcc = findAccID(toAccID);
             if(fromAcc.getBalance().compareTo(new BigDecimal(amount))<0){
-                throw new NotEnoughMoneyException("NO MONEY, PLS GIMME MOAR $$$. Your current balance is: " + fromAcc.getBalance());
+                throw new NotEnoughMoneyException("NO MONEY, PLS GIMME MOAR $$$. Your current balance is: " + fromAcc.getBalance() + " \nChoose other account: " + findAccCus(fromAccID, toAccID, amount) );
+
+
              }
             else{
                 fromAcc.charge(amount);
