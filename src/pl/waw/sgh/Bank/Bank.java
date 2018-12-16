@@ -43,16 +43,19 @@ public class Bank {
     }
 
     private List<Account> custaccList = new ArrayList<>();
-    private String findAccCus (Integer accID, Integer toAccID, Double amount) throws NonExistingAccountException {
+    public String findAccCus (Integer accID, Integer toAccID, Double amount) throws NonExistingAccountException {
         custaccList.clear();
         Account Tacc = findAccID(accID);
         Integer cust = Tacc.getCustomer().getCustomerID();
+        Integer idkonto = 0;
             for(Customer cus : custList){
                 if(cust==cus.getCustomerID()){
                     for (Account acc : accList) {
                         if (acc.getCustomer()==cus) {
-                            if(acc.getBalance().compareTo(new BigDecimal(amount))>=0) {
-                                custaccList.add(acc);
+                            if (acc.getAccountID() != toAccID) {
+                                 if(acc.getBalance().compareTo(new BigDecimal(amount))>=0) {
+                                     custaccList.add(acc);
+
 //                                accID=acc.getAccountID();
 //                                try {
 //                                    transfer(accID,toAccID,amount);
@@ -60,6 +63,7 @@ public class Bank {
 //                                } catch (NotEnoughMoneyException e) {
 //                                    e.printStackTrace();
 //                                }
+                                 }
                             }
 //                            return acc;
                         }
@@ -71,12 +75,22 @@ public class Bank {
             System.out.println(list);
          return list;
 //            for(Account subacc:custaccList){
-//                return subacc;
-//            }
+////                return subacc;
+////            }
 
 //        throw new NonExistingAccountException("Other account do not exist");
     }
 
+
+/* Dlaczego w ac nie zapisuje ID, tylko przez cały czas dziaąłnia pozostaje tak jak na początku?
+    public Integer findAccID2 (List<Account> listofaccount) {
+        Integer ac = 1;
+        for (Account acc : listofaccount) {
+                ac=acc.getAccountID();
+        }
+        return ac;
+    }
+*/
 
 
     public Account findAccID (Integer accID) throws NonExistingAccountException {
@@ -111,7 +125,9 @@ public class Bank {
             Account fromAcc = findAccID(fromAccID);
             Account toAcc = findAccID(toAccID);
             if(fromAcc.getBalance().compareTo(new BigDecimal(amount))<0){
-                throw new NotEnoughMoneyException("NO MONEY, PLS GIMME MOAR $$$. Your current balance is: " + fromAcc.getBalance() + " \nChoose other account: " + findAccCus(fromAccID, toAccID, amount) );
+                /*Integer a=findAccID2(custaccList);*/
+                throw new NotEnoughMoneyException("NO MONEY, PLS GIMME MOAR $$$. Your current balance is: " + fromAcc.getBalance() + " \nChoose other account: " + findAccCus(fromAccID, toAccID, amount) /*+ "\nTransfer made from account ID: " + a +
+                        "\n"+ transfer(a,toAccID,amount) + "Current balance is: " + findAccID(a).getBalance()*/ );
 
 
              }

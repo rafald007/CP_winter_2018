@@ -30,7 +30,7 @@ public class PlayWithBank {
 //        a2.deposit(29.0);
 
         try {
-            bank.transfer(100, 102, 1000.00);
+            bank.transfer(100, 104, 1000.00);
         } catch (NotEnoughMoneyException e) {
             e.printStackTrace();
 //            System.out.println("Not enough money... choose other account: ");
