@@ -92,6 +92,34 @@ public class Bank {
     }
 */
 
+    private int findCurCustIdx(Integer curCustID){
+        for(Customer cust : custList) {
+            if (cust.getCustomerID().equals(curCustID))
+                return custList.indexOf(cust);
+        }
+        return -1;
+    }
+
+    public Customer getPrevCustomer(Integer curCustID){
+        int curCustIdx = -1;
+        for(Customer cust : custList){
+            if(cust.getCustomerID().equals(curCustID))
+                custList.indexOf(cust);
+        }
+        if(curCustID>0)
+            return custList.get(curCustIdx-1);
+        else
+            return null;
+    }
+
+    public Customer getNextCustomer (Integer curCustID){
+        int curCustIdx = findCurCustIdx(curCustID);
+        if(curCustID< custList.size()-1)
+            return custList.get(curCustID+1);
+        else
+            return null;
+    }
+
 
     public Account findAccID (Integer accID) throws NonExistingAccountException {
         int exist=0;
